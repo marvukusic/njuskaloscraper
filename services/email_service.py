@@ -9,13 +9,13 @@ def sendMail(toAddress, content):
     port = 465
     smtpServer = "smtp.gmail.com"
 
-    # server = smtplib.SMTP_SSL(smtpServer, port)
-    # server.login(fromAddress, password)
+    server = smtplib.SMTP_SSL(smtpServer, port)
+    server.login(fromAddress, password)
 
     message = createEmail(toAddress, content).as_string()
 
-    # server.sendmail(fromAddress, toAddress, message)
-    # server.quit()
+    server.sendmail(fromAddress, toAddress, message)
+    server.quit()
 
 def createEmail(toAddress, content):
     msg = MIMEMultipart('alternative')
