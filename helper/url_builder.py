@@ -1,38 +1,21 @@
 def buildUrl(args):
-    website =           "https://www.canyon.com/"
-    locale =            "en-%s/" % args.locale
-    outlet =            "outlet/"
-    bikeType =          "%s-bikes/" % args.type
-    outletType =        "?cgid=outlet-%s" % args.type
-    prefn1 =            "&prefn1=pc_familie"
-    prefn2 =            "&prefn2=pc_geschlecht"
-    prefn3 =            "&prefn3=pc_outlet"
-    prefn4 =            "&prefn4=pc_rahmengroesse"
-    prefn5 =            "&prefn5=pg_materialgroup"
-    prefv1 =            "&prefv1=%s" % args.model
-    prefv2 =            "&prefv2=%s" % args.gender
-    prefv3 =            "&prefv3=true"
-    prefv4 =            "&prefv4=%s" % args.size
-    prefv5 =            "&prefv5=Complete%20bikes"
-    sorting =           "&srule=sort_price_ascending"
-    hideFilters =       "&hideSelectedFilters=true"
-
+    website =           "https://www.njuskalo.hr/"
+    section =           "%s" % args.section
+    minPrice =          "?price%%5Bmin%%5D=%i" % args.minPrice
+    maxPrice =          "&price%%5Bmax%%5D=%i" % args.maxPrice
+    condition =         "&condition%5Bused%5D=1"
+    
     url = "".join([website, 
-                    locale, 
-                    outlet, 
-                    bikeType, 
-                    outletType, 
-                    prefn1,
-                    prefn2,
-                    prefn3,
-                    prefn4,
-                    prefn5,
-                    prefv1,
-                    prefv2,
-                    prefv3,
-                    prefv4,
-                    prefv5,
-                    sorting,
-                    hideFilters
+                    section, 
+                    minPrice, 
+                    maxPrice, 
+                    condition,
                 ])
+
     return url
+
+def buildPaginatedUrls(url, maxPages):
+    urls = []
+    for idx in range(1, maxPages + 1):
+        urls.append(url + "&page=%i" % idx)
+    return urls

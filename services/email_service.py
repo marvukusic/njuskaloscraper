@@ -9,17 +9,17 @@ def sendMail(toAddress, content):
     port = 465
     smtpServer = "smtp.gmail.com"
 
-    server = smtplib.SMTP_SSL(smtpServer, port)
-    server.login(fromAddress, password)
+    # server = smtplib.SMTP_SSL(smtpServer, port)
+    # server.login(fromAddress, password)
 
     message = createEmail(toAddress, content).as_string()
 
-    server.sendmail(fromAddress, toAddress, message)
-    server.quit()
+    # server.sendmail(fromAddress, toAddress, message)
+    # server.quit()
 
 def createEmail(toAddress, content):
     msg = MIMEMultipart('alternative')
-    msg['Subject'] = "New canyon outlet bikes available"
+    msg['Subject'] = "New item(s) on njuskalo"
     msg['From'] = fromAddress
     msg['To'] = toAddress
 
@@ -34,9 +34,9 @@ def createEmail(toAddress, content):
     return msg
 
 def createTxtMessage(content):
-    message = '%-*s %-*s %s\n\n' % (40, 'Model', 10, 'Price', 'Disc.')
+    message = '%-*s %-*s\n\n' % (40, 'Item', 10, 'Price')
     for element in content:
-        message += '%-*s %-*s %s\n' % (40, element[0], 10, element[1], element[2])
+        message += '%-*s %-*s\n' % (40, element[0], 10, element[1])
     print(message)
     return message
 
@@ -47,15 +47,14 @@ def createHtmlMessage(content):
         <body>
             <table>
                 <tr>
-                    <td><b>Model</b></td>
+                    <td><b>Item</b></td>
                     <td><b>Price</b></td>
-                    <td><b>Disc.</b></td>
                 </tr>
         """
 
-    for bike in content:
+    for item in content:
         html += '  <tr><td>'
-        html += '    </td><td>'.join(bike)
+        html += '    </td><td>'.join(item)
         html += '  </td></tr>'
 
     html += """\
