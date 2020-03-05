@@ -25,9 +25,9 @@ def createEmail(toAddress, content):
 
     text = createTxtMessage(content)
     html = createHtmlMessage(content)
-
-    part1 = MIMEText(text, 'plain')
-    part2 = MIMEText(html, 'html')
+    
+    part1 = MIMEText(text, 'plain', 'utf-8')
+    part2 = MIMEText(html, 'html', 'utf-8')
 
     msg.attach(part1)
     msg.attach(part2)
@@ -37,7 +37,7 @@ def createTxtMessage(content):
     message = '%-*s %-*s\n\n' % (40, 'Item', 10, 'Price')
     for element in content:
         message += '%-*s %-*s\n' % (40, element[0], 10, element[1])
-    print(message)
+    print(message.encode('utf-8'))
     return message
 
 def createHtmlMessage(content):
