@@ -17,6 +17,7 @@ Every subsequent run will send items that are newly added, if any.
 
 ## Regions
 Abbreviation    | Region
+--------------- | -------------------------------
 BB              | Bjelovarsko-bilogorska županija
 BP              | Brodsko-posavska županija
 DN              | Dubrovačko-neretvanska županija
