@@ -31,7 +31,7 @@ class ArgumentParser:
         if locations:
             locationsArray = locations.split(',')
             codedLocations = [str(self.__locationCodes[location]) for location in locationsArray]
-            self.location = "%7C".join(codedLocations)
+            self.location = "%2C".join(codedLocations)
         else:
             self.location = None
     
