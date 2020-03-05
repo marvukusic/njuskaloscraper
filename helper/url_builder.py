@@ -4,6 +4,7 @@ def buildUrl(args):
     minPrice =          "?price%%5Bmin%%5D=%i" % args.minPrice
     maxPrice =          "&price%%5Bmax%%5D=%i" % args.maxPrice
     condition =         "&condition%5Bused%5D=1"
+    location =          "&locationIds=%s" % args.location
     
     url = "".join([website, 
                     section, 
@@ -11,6 +12,9 @@ def buildUrl(args):
                     maxPrice, 
                     condition,
                 ])
+    
+    if args.location:
+        url += location
 
     return url
 
