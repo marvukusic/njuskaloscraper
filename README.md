@@ -2,7 +2,7 @@
 Scrapes Njuskalo website to let you know when new items are added
 
 # USAGE 
-Periodically run script using arguments from table below.
+Periodically run script using arguments from table below. To get section argument, navigate to any section on Njuskalo website and inspect url in browser address bar.
 
 Argument   | Description                                                          | Default
 ---------- | -------------------------------------------------------------------- | ------------
